@@ -44,8 +44,9 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
-            documentMap1 = new FastColoredTextBoxNS.DocumentMap();
             aboutToolStripMenuItem1 = new ToolStripMenuItem();
+            documentMap1 = new FastColoredTextBoxNS.DocumentMap();
+            imageList1 = new ImageList(components);
             ((System.ComponentModel.ISupportInitialize)TxtEditor).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -57,19 +58,19 @@
             treeView1.Dock = DockStyle.Left;
             treeView1.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             treeView1.ForeColor = Color.White;
+            treeView1.Indent = 5;
             treeView1.LineColor = Color.White;
             treeView1.Location = new Point(0, 24);
             treeView1.Margin = new Padding(0);
             treeView1.Name = "treeView1";
-            treeView1.Scrollable = false;
             treeView1.Size = new Size(175, 426);
             treeView1.TabIndex = 0;
-            treeView1.AfterSelect += treeView1_AfterSelect;
+            treeView1.AfterSelect += TreeView1_AfterSelect;
             // 
             // TxtEditor
             // 
             TxtEditor.AutoCompleteBracketsList = (new char[] { '(', ')', '{', '}', '[', ']', '"', '"', '\'', '\'' });
-            TxtEditor.AutoScrollMinSize = new Size(200, 16);
+            TxtEditor.AutoScrollMinSize = new Size(29, 16);
             TxtEditor.BackBrush = null;
             TxtEditor.BackColor = Color.Transparent;
             TxtEditor.BookmarkColor = Color.FromArgb(128, 255, 255);
@@ -91,7 +92,6 @@
             TxtEditor.ServiceLinesColor = Color.White;
             TxtEditor.Size = new Size(625, 426);
             TxtEditor.TabIndex = 1;
-            TxtEditor.Text = "fastColoredTextBox1";
             TxtEditor.Zoom = 100;
             // 
             // menuStrip1
@@ -118,49 +118,50 @@
             newFileToolStripMenuItem.BackColor = Color.Transparent;
             newFileToolStripMenuItem.Image = Properties.Resources.file_plus;
             newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            newFileToolStripMenuItem.Size = new Size(180, 22);
+            newFileToolStripMenuItem.Size = new Size(142, 22);
             newFileToolStripMenuItem.Text = "New File";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(139, 6);
             // 
             // openFolderToolStripMenuItem
             // 
             openFolderToolStripMenuItem.Image = Properties.Resources.folder;
             openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
-            openFolderToolStripMenuItem.Size = new Size(180, 22);
+            openFolderToolStripMenuItem.Size = new Size(142, 22);
             openFolderToolStripMenuItem.Text = "Open Folder";
+            openFolderToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             // 
             // openFileToolStripMenuItem
             // 
             openFileToolStripMenuItem.Image = Properties.Resources.file_text;
             openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            openFileToolStripMenuItem.Size = new Size(180, 22);
+            openFileToolStripMenuItem.Size = new Size(142, 22);
             openFileToolStripMenuItem.Text = "Open File";
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(177, 6);
+            toolStripSeparator2.Size = new Size(139, 6);
             // 
             // saveFileToolStripMenuItem
             // 
             saveFileToolStripMenuItem.Image = (Image)resources.GetObject("saveFileToolStripMenuItem.Image");
             saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            saveFileToolStripMenuItem.Size = new Size(180, 22);
+            saveFileToolStripMenuItem.Size = new Size(142, 22);
             saveFileToolStripMenuItem.Text = "Save File";
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(177, 6);
+            toolStripSeparator3.Size = new Size(139, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(142, 22);
             exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -178,9 +179,16 @@
             aboutToolStripMenuItem.Size = new Size(45, 20);
             aboutToolStripMenuItem.Text = "Help";
             // 
+            // aboutToolStripMenuItem1
+            // 
+            aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            aboutToolStripMenuItem1.Size = new Size(105, 22);
+            aboutToolStripMenuItem1.Text = "About";
+            // 
             // documentMap1
             // 
             documentMap1.Dock = DockStyle.Right;
+            documentMap1.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point);
             documentMap1.ForeColor = Color.FromArgb(72, 120, 250);
             documentMap1.Location = new Point(709, 24);
             documentMap1.Name = "documentMap1";
@@ -190,11 +198,16 @@
             documentMap1.Target = TxtEditor;
             documentMap1.Text = "documentMap1";
             // 
-            // aboutToolStripMenuItem1
+            // imageList1
             // 
-            aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            aboutToolStripMenuItem1.Size = new Size(180, 22);
-            aboutToolStripMenuItem1.Text = "About";
+            imageList1.ColorDepth = ColorDepth.Depth8Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "file.png");
+            imageList1.Images.SetKeyName(1, "file-plus.png");
+            imageList1.Images.SetKeyName(2, "file-text.png");
+            imageList1.Images.SetKeyName(3, "folder.png");
+            imageList1.Images.SetKeyName(4, "save.png");
             // 
             // Form1
             // 
@@ -206,10 +219,10 @@
             Controls.Add(TxtEditor);
             Controls.Add(treeView1);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "Form1";
-            Load += form1_load;
+            Text = "Scriptor";
             ((System.ComponentModel.ISupportInitialize)TxtEditor).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -235,5 +248,6 @@
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem1;
+        public ImageList imageList1;
     }
 }

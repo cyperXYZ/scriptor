@@ -14,6 +14,7 @@ namespace scriptor
                 // Clear the existing nodes
                 parentNode.Nodes.Clear();
 
+
                 // Get all directories in the current directory
                 string[] subDirectories = Directory.GetDirectories(directory);
 
@@ -21,10 +22,11 @@ namespace scriptor
                 {
                     // Create a new node for the subdirectory
                     TreeNode directoryNode = new TreeNode(Path.GetFileName(subDirectory));
+                    directoryNode.NodeFont = new Font(treeView1.Font, FontStyle.Bold); // Set the font to bold for directories
+                    directoryNode.Tag = subDirectory; // Store the full path as tag
+                    directoryNode.ImageIndex = 0; // Set the index of the folder icon in the ImageList
+                    directoryNode.SelectedImageIndex = 0; // Set the index of the selected folder icon in the ImageList
                     parentNode.Nodes.Add(directoryNode);
-
-                    // Recursively populate the tree view with subdirectories
-                    PopulateTreeView(subDirectory, directoryNode);
                 }
 
                 // Get all files in the current directory
@@ -34,6 +36,7 @@ namespace scriptor
                 {
                     // Create a new node for the file
                     TreeNode fileNode = new TreeNode(Path.GetFileName(file));
+                    fileNode.Tag = file; // Store the full path as tag
                     parentNode.Nodes.Add(fileNode);
                 }
             }
@@ -43,37 +46,56 @@ namespace scriptor
             }
         }
 
-        private void form1_load(object sender, EventArgs e)
-        {
-            // Specify the root directory
-            string rootDirectory = @"C:\Users\Ryan\Desktop\CyperSite"; // Change this to your desired directory
-
-            // Create a root node for the tree view
-            TreeNode rootNode = new TreeNode(rootDirectory);
-            treeView1.Nodes.Add(rootNode);
-
-            // Populate the tree view with files and subdirectories
-            PopulateTreeView(rootDirectory, rootNode);
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode selectedNode = e.Node;
 
-            // Check if the selected node represents a file
-            if (File.Exists(selectedNode.FullPath))
+            if (selectedNode.Tag != null)
             {
-                try
-                {
-                    // Read the contents of the file
-                    string fileContents = File.ReadAllText(selectedNode.FullPath);
+                string fullPath = selectedNode.Tag.ToString();
 
-                    // Display the contents in a TextBox
-                    TxtEditor.Text = fileContents;
-                }
-                catch (Exception ex)
+                // Check if the selected node represents a file
+                if (File.Exists(fullPath))
                 {
-                    MessageBox.Show("Error reading file: " + ex.Message);
+                    try
+                    {
+                        // Read the contents of the file
+                        string fileContents = File.ReadAllText(fullPath);
+                        TxtEditor.Text = fileContents;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error reading file: " + ex.Message);
+                    }
+                }
+                // Check if the selected node represents a directory
+                else if (Directory.Exists(fullPath))
+                {
+                    // Clear the child nodes of the selected node
+                    selectedNode.Nodes.Clear();
+
+                    // Populate the tree view with the selected directory
+                    PopulateTreeView(fullPath, selectedNode);
+                }
+            }
+        }
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Show the FolderBrowserDialog to select a directory
+            using (var folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.Description = "Select a directory";
+                folderBrowserDialog.ShowNewFolderButton = false;
+
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedDirectory = folderBrowserDialog.SelectedPath;
+
+                    // Clear the entire tree view
+                    treeView1.Nodes.Clear();
+
+                    // Populate the tree view with the selected directory
+                    PopulateTreeView(selectedDirectory, treeView1.Nodes.Add(Path.GetFileName(selectedDirectory)));
                 }
             }
         }
