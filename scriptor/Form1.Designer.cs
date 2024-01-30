@@ -45,6 +45,7 @@
             editToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             documentMap1 = new FastColoredTextBoxNS.DocumentMap();
+            aboutToolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)TxtEditor).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -171,6 +172,7 @@
             // 
             // aboutToolStripMenuItem
             // 
+            aboutToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem1 });
             aboutToolStripMenuItem.ForeColor = Color.White;
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             aboutToolStripMenuItem.Size = new Size(45, 20);
@@ -187,6 +189,12 @@
             documentMap1.TabIndex = 3;
             documentMap1.Target = TxtEditor;
             documentMap1.Text = "documentMap1";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            aboutToolStripMenuItem1.Size = new Size(180, 22);
+            aboutToolStripMenuItem1.Text = "About";
             // 
             // Form1
             // 
@@ -226,5 +234,6 @@
         private ToolStripMenuItem saveFileToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem exitToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem1;
     }
 }
