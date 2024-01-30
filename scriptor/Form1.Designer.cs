@@ -43,6 +43,8 @@
             toolStripSeparator3 = new ToolStripSeparator();
             exitToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
+            undoToolStripMenuItem = new ToolStripMenuItem();
+            redoToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem1 = new ToolStripMenuItem();
             documentMap1 = new FastColoredTextBoxNS.DocumentMap();
@@ -118,19 +120,22 @@
             newFileToolStripMenuItem.BackColor = Color.Transparent;
             newFileToolStripMenuItem.Image = Properties.Resources.file_plus;
             newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            newFileToolStripMenuItem.Size = new Size(142, 22);
+            newFileToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
+            newFileToolStripMenuItem.Size = new Size(215, 22);
             newFileToolStripMenuItem.Text = "New File";
+            newFileToolStripMenuItem.Click += newFileToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(139, 6);
+            toolStripSeparator1.Size = new Size(212, 6);
             // 
             // openFolderToolStripMenuItem
             // 
             openFolderToolStripMenuItem.Image = Properties.Resources.folder;
             openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
-            openFolderToolStripMenuItem.Size = new Size(142, 22);
+            openFolderToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.O;
+            openFolderToolStripMenuItem.Size = new Size(215, 22);
             openFolderToolStripMenuItem.Text = "Open Folder";
             openFolderToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             // 
@@ -138,38 +143,61 @@
             // 
             openFileToolStripMenuItem.Image = Properties.Resources.file_text;
             openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            openFileToolStripMenuItem.Size = new Size(142, 22);
+            openFileToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
+            openFileToolStripMenuItem.Size = new Size(215, 22);
             openFileToolStripMenuItem.Text = "Open File";
+            openFileToolStripMenuItem.Click += openFileToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(139, 6);
+            toolStripSeparator2.Size = new Size(212, 6);
             // 
             // saveFileToolStripMenuItem
             // 
             saveFileToolStripMenuItem.Image = (Image)resources.GetObject("saveFileToolStripMenuItem.Image");
             saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            saveFileToolStripMenuItem.Size = new Size(142, 22);
+            saveFileToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Space;
+            saveFileToolStripMenuItem.Size = new Size(215, 22);
             saveFileToolStripMenuItem.Text = "Save File";
+            saveFileToolStripMenuItem.Click += saveFileToolStripMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(139, 6);
+            toolStripSeparator3.Size = new Size(212, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(142, 22);
+            exitToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F14;
+            exitToolStripMenuItem.Size = new Size(215, 22);
             exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // editToolStripMenuItem
             // 
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { undoToolStripMenuItem, redoToolStripMenuItem });
             editToolStripMenuItem.ForeColor = Color.White;
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(40, 20);
             editToolStripMenuItem.Text = "Edit";
+            // 
+            // undoToolStripMenuItem
+            // 
+            undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            undoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
+            undoToolStripMenuItem.Size = new Size(180, 22);
+            undoToolStripMenuItem.Text = "Undo";
+            undoToolStripMenuItem.Click += undoToolStripMenuItem_Click;
+            // 
+            // redoToolStripMenuItem
+            // 
+            redoToolStripMenuItem.Name = "redoToolStripMenuItem";
+            redoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Y;
+            redoToolStripMenuItem.Size = new Size(180, 22);
+            redoToolStripMenuItem.Text = "Redo";
+            redoToolStripMenuItem.Click += redoToolStripMenuItem_Click;
             // 
             // aboutToolStripMenuItem
             // 
@@ -182,8 +210,9 @@
             // aboutToolStripMenuItem1
             // 
             aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            aboutToolStripMenuItem1.Size = new Size(105, 22);
+            aboutToolStripMenuItem1.Size = new Size(180, 22);
             aboutToolStripMenuItem1.Text = "About";
+            aboutToolStripMenuItem1.Click += aboutToolStripMenuItem1_Click;
             // 
             // documentMap1
             // 
@@ -249,5 +278,7 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem1;
         public ImageList imageList1;
+        private ToolStripMenuItem undoToolStripMenuItem;
+        private ToolStripMenuItem redoToolStripMenuItem;
     }
 }
