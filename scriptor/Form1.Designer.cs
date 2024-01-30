@@ -47,7 +47,9 @@
             redoToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem1 = new ToolStripMenuItem();
-            documentMap1 = new FastColoredTextBoxNS.DocumentMap();
+            preferencesToolStripMenuItem = new ToolStripMenuItem();
+            flavorToolStripMenuItem = new ToolStripMenuItem();
+            TxtMap = new FastColoredTextBoxNS.DocumentMap();
             imageList1 = new ImageList(components);
             ((System.ComponentModel.ISupportInitialize)TxtEditor).BeginInit();
             menuStrip1.SuspendLayout();
@@ -72,23 +74,31 @@
             // TxtEditor
             // 
             TxtEditor.AutoCompleteBracketsList = (new char[] { '(', ')', '{', '}', '[', ']', '"', '"', '\'', '\'' });
+            TxtEditor.AutoIndentCharsPatterns = "";
             TxtEditor.AutoScrollMinSize = new Size(29, 16);
             TxtEditor.BackBrush = null;
             TxtEditor.BackColor = Color.Transparent;
             TxtEditor.BookmarkColor = Color.FromArgb(128, 255, 255);
+            TxtEditor.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             TxtEditor.CharHeight = 16;
             TxtEditor.CharWidth = 9;
+            TxtEditor.CommentPrefix = null;
             TxtEditor.DisabledColor = Color.FromArgb(100, 180, 180, 180);
             TxtEditor.Dock = DockStyle.Fill;
             TxtEditor.Font = new Font("Courier New", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             TxtEditor.ForeColor = Color.White;
             TxtEditor.IndentBackColor = Color.FromArgb(15, 15, 15);
             TxtEditor.IsReplaceMode = false;
+            TxtEditor.Language = FastColoredTextBoxNS.Language.XML;
+            TxtEditor.LeftBracket = '<';
+            TxtEditor.LeftBracket2 = '(';
             TxtEditor.LineNumberColor = Color.FromArgb(72, 120, 250);
             TxtEditor.Location = new Point(175, 24);
             TxtEditor.Margin = new Padding(0);
             TxtEditor.Name = "TxtEditor";
             TxtEditor.Paddings = new Padding(0);
+            TxtEditor.RightBracket = '>';
+            TxtEditor.RightBracket2 = ')';
             TxtEditor.SelectionColor = Color.FromArgb(60, 0, 0, 255);
             TxtEditor.ServiceColors = (FastColoredTextBoxNS.ServiceColors)resources.GetObject("TxtEditor.ServiceColors");
             TxtEditor.ServiceLinesColor = Color.White;
@@ -100,7 +110,7 @@
             // 
             menuStrip1.BackColor = Color.FromArgb(11, 11, 11);
             menuStrip1.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, aboutToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, aboutToolStripMenuItem, preferencesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -187,7 +197,7 @@
             // 
             undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             undoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
-            undoToolStripMenuItem.Size = new Size(180, 22);
+            undoToolStripMenuItem.Size = new Size(144, 22);
             undoToolStripMenuItem.Text = "Undo";
             undoToolStripMenuItem.Click += undoToolStripMenuItem_Click;
             // 
@@ -195,7 +205,7 @@
             // 
             redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             redoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Y;
-            redoToolStripMenuItem.Size = new Size(180, 22);
+            redoToolStripMenuItem.Size = new Size(144, 22);
             redoToolStripMenuItem.Text = "Redo";
             redoToolStripMenuItem.Click += redoToolStripMenuItem_Click;
             // 
@@ -210,22 +220,37 @@
             // aboutToolStripMenuItem1
             // 
             aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            aboutToolStripMenuItem1.Size = new Size(180, 22);
+            aboutToolStripMenuItem1.Size = new Size(105, 22);
             aboutToolStripMenuItem1.Text = "About";
             aboutToolStripMenuItem1.Click += aboutToolStripMenuItem1_Click;
             // 
-            // documentMap1
+            // preferencesToolStripMenuItem
             // 
-            documentMap1.Dock = DockStyle.Right;
-            documentMap1.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            documentMap1.ForeColor = Color.FromArgb(72, 120, 250);
-            documentMap1.Location = new Point(709, 24);
-            documentMap1.Name = "documentMap1";
-            documentMap1.Scale = 0.5F;
-            documentMap1.Size = new Size(91, 426);
-            documentMap1.TabIndex = 3;
-            documentMap1.Target = TxtEditor;
-            documentMap1.Text = "documentMap1";
+            preferencesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { flavorToolStripMenuItem });
+            preferencesToolStripMenuItem.ForeColor = Color.White;
+            preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            preferencesToolStripMenuItem.Size = new Size(86, 20);
+            preferencesToolStripMenuItem.Text = "Preferences";
+            // 
+            // flavorToolStripMenuItem
+            // 
+            flavorToolStripMenuItem.Name = "flavorToolStripMenuItem";
+            flavorToolStripMenuItem.Size = new Size(180, 22);
+            flavorToolStripMenuItem.Text = "Load theme file";
+            flavorToolStripMenuItem.Click += SwitchThemeButton_Click;
+            // 
+            // TxtMap
+            // 
+            TxtMap.Dock = DockStyle.Right;
+            TxtMap.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TxtMap.ForeColor = Color.FromArgb(72, 120, 250);
+            TxtMap.Location = new Point(709, 24);
+            TxtMap.Name = "TxtMap";
+            TxtMap.Scale = 0.5F;
+            TxtMap.Size = new Size(91, 426);
+            TxtMap.TabIndex = 3;
+            TxtMap.Target = TxtEditor;
+            TxtMap.Text = "documentMap1";
             // 
             // imageList1
             // 
@@ -244,7 +269,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(12, 12, 12);
             ClientSize = new Size(800, 450);
-            Controls.Add(documentMap1);
+            Controls.Add(TxtMap);
             Controls.Add(TxtEditor);
             Controls.Add(treeView1);
             Controls.Add(menuStrip1);
@@ -267,7 +292,7 @@
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
-        private FastColoredTextBoxNS.DocumentMap documentMap1;
+        private FastColoredTextBoxNS.DocumentMap TxtMap;
         private ToolStripMenuItem newFileToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem openFolderToolStripMenuItem;
@@ -280,5 +305,7 @@
         public ImageList imageList1;
         private ToolStripMenuItem undoToolStripMenuItem;
         private ToolStripMenuItem redoToolStripMenuItem;
+        private ToolStripMenuItem preferencesToolStripMenuItem;
+        private ToolStripMenuItem flavorToolStripMenuItem;
     }
 }

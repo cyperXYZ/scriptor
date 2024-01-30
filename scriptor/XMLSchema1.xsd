@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Define element for the root of the theme XML -->
+  <xs:element name="theme">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Define child elements for theme properties -->
+        <xs:element name="editor_color" type="xs:string"/>
+        <xs:element name="editor_text_color" type="xs:string"/>
+        <xs:element name="editor_indent_color" type="xs:string"/>
+        <xs:element name="editor_indent_number_color" type="xs:string"/>
+        <xs:element name="Document_map_color" type="xs:string"/>
+        <xs:element name="main_color" type="xs:string"/>
+        <xs:element name="text_color" type="xs:string"/>
+        <!-- Add more properties as needed... -->
+      </xs:sequence>
+      <!-- Define an attribute for theme name -->
+      <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

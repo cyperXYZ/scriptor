@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="theme.xsd"
+       name="dark">
+  <editor_color>15,15,15</editor_color>
+  <editor_text_color>255,255,255</editor_text_color>
+  <editor_indent_color>20,20,20</editor_indent_color>
+  <editor_indent_number_color>72, 120, 250</editor_indent_number_color>
+  <Document_map_color>72, 120, 250</Document_map_color>
+  <main_color>12,12,12</main_color>
+  <text_color>255,255,255</text_color>
+  <!-- Add more properties as needed... -->
+</theme>
+

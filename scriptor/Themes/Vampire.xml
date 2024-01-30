@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="theme.xsd"
+       name="Vampire">
+       <editor_color>#370617</editor_color>
+       <editor_text_color>#ffffff</editor_text_color>
+       <editor_indent_color>#6a040f</editor_indent_color>
+       <editor_indent_number_color>#d00000</editor_indent_number_color>
+       <Document_map_color>#d00000</Document_map_color>
+       <main_color>#03071e</main_color>
+       <text_color>#ffffff</text_color>
+  <!-- Add more properties as needed... -->
+</theme>
+
