@@ -32,6 +32,9 @@
     <None Update="Themes\Dark.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Themes\Vampire.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Themes\Vanilla.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

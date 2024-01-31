@@ -19,7 +19,7 @@ public partial class Form1 : Form
     public string oldtxt = "";
 
 
-    private void LoadTheme(string themeFileName)
+    public void LoadTheme(string themeFileName)
     {
         try
         {
@@ -243,5 +243,39 @@ public partial class Form1 : Form
         {
             LoadTheme(openFileDialog.FileName);
         }
+    }
+
+    private void languageToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+    {
+        if (e.ClickedItem.Text == "XML")
+        {
+            TxtEditor.Language = FastColoredTextBoxNS.Language.XML;
+        }
+        else if (e.ClickedItem.Text == "HTML")
+        {
+            TxtEditor.Language = FastColoredTextBoxNS.Language.HTML;
+        }
+        else if (e.ClickedItem.Text == "JS")
+        {
+            TxtEditor.Language = FastColoredTextBoxNS.Language.JS;
+        }
+        else if (e.ClickedItem.Text == "Lua")
+        {
+            TxtEditor.Language = FastColoredTextBoxNS.Language.Lua;
+        }
+        else if (e.ClickedItem.Text == "CSharp")
+        {
+            TxtEditor.Language = FastColoredTextBoxNS.Language.CSharp;
+        }
+        else
+        {
+            TxtEditor.Language = FastColoredTextBoxNS.Language.Custom;
+        }
+    }
+
+    private void openPreferencesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Preferences pref = new Preferences();
+        pref.ShowDialog();
     }
 }

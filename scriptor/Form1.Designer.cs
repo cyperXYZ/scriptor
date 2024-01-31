@@ -49,8 +49,16 @@
             aboutToolStripMenuItem1 = new ToolStripMenuItem();
             preferencesToolStripMenuItem = new ToolStripMenuItem();
             flavorToolStripMenuItem = new ToolStripMenuItem();
+            languageToolStripMenuItem = new ToolStripMenuItem();
+            customToolStripMenuItem = new ToolStripMenuItem();
+            cSharpToolStripMenuItem = new ToolStripMenuItem();
+            hTMLToolStripMenuItem = new ToolStripMenuItem();
+            jSToolStripMenuItem = new ToolStripMenuItem();
+            xMLToolStripMenuItem = new ToolStripMenuItem();
+            luaToolStripMenuItem = new ToolStripMenuItem();
             TxtMap = new FastColoredTextBoxNS.DocumentMap();
             imageList1 = new ImageList(components);
+            openPreferencesToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)TxtEditor).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -102,6 +110,7 @@
             TxtEditor.SelectionColor = Color.FromArgb(60, 0, 0, 255);
             TxtEditor.ServiceColors = (FastColoredTextBoxNS.ServiceColors)resources.GetObject("TxtEditor.ServiceColors");
             TxtEditor.ServiceLinesColor = Color.White;
+            TxtEditor.ShowFoldingLines = true;
             TxtEditor.Size = new Size(625, 426);
             TxtEditor.TabIndex = 1;
             TxtEditor.Zoom = 100;
@@ -110,7 +119,7 @@
             // 
             menuStrip1.BackColor = Color.FromArgb(11, 11, 11);
             menuStrip1.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, aboutToolStripMenuItem, preferencesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, aboutToolStripMenuItem, preferencesToolStripMenuItem, languageToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -226,7 +235,7 @@
             // 
             // preferencesToolStripMenuItem
             // 
-            preferencesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { flavorToolStripMenuItem });
+            preferencesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { flavorToolStripMenuItem, openPreferencesToolStripMenuItem });
             preferencesToolStripMenuItem.ForeColor = Color.White;
             preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
             preferencesToolStripMenuItem.Size = new Size(86, 20);
@@ -238,6 +247,51 @@
             flavorToolStripMenuItem.Size = new Size(180, 22);
             flavorToolStripMenuItem.Text = "Load theme file";
             flavorToolStripMenuItem.Click += SwitchThemeButton_Click;
+            // 
+            // languageToolStripMenuItem
+            // 
+            languageToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { customToolStripMenuItem, cSharpToolStripMenuItem, hTMLToolStripMenuItem, jSToolStripMenuItem, xMLToolStripMenuItem, luaToolStripMenuItem });
+            languageToolStripMenuItem.ForeColor = Color.White;
+            languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            languageToolStripMenuItem.Size = new Size(75, 20);
+            languageToolStripMenuItem.Text = "Language";
+            languageToolStripMenuItem.DropDownItemClicked += languageToolStripMenuItem_DropDownItemClicked;
+            // 
+            // customToolStripMenuItem
+            // 
+            customToolStripMenuItem.Name = "customToolStripMenuItem";
+            customToolStripMenuItem.Size = new Size(118, 22);
+            customToolStripMenuItem.Text = "Custom";
+            // 
+            // cSharpToolStripMenuItem
+            // 
+            cSharpToolStripMenuItem.Name = "cSharpToolStripMenuItem";
+            cSharpToolStripMenuItem.Size = new Size(118, 22);
+            cSharpToolStripMenuItem.Text = "CSharp";
+            // 
+            // hTMLToolStripMenuItem
+            // 
+            hTMLToolStripMenuItem.Name = "hTMLToolStripMenuItem";
+            hTMLToolStripMenuItem.Size = new Size(118, 22);
+            hTMLToolStripMenuItem.Text = "HTML";
+            // 
+            // jSToolStripMenuItem
+            // 
+            jSToolStripMenuItem.Name = "jSToolStripMenuItem";
+            jSToolStripMenuItem.Size = new Size(118, 22);
+            jSToolStripMenuItem.Text = "JS";
+            // 
+            // xMLToolStripMenuItem
+            // 
+            xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+            xMLToolStripMenuItem.Size = new Size(118, 22);
+            xMLToolStripMenuItem.Text = "XML";
+            // 
+            // luaToolStripMenuItem
+            // 
+            luaToolStripMenuItem.Name = "luaToolStripMenuItem";
+            luaToolStripMenuItem.Size = new Size(118, 22);
+            luaToolStripMenuItem.Text = "Lua";
             // 
             // TxtMap
             // 
@@ -262,6 +316,13 @@
             imageList1.Images.SetKeyName(2, "file-text.png");
             imageList1.Images.SetKeyName(3, "folder.png");
             imageList1.Images.SetKeyName(4, "save.png");
+            // 
+            // openPreferencesToolStripMenuItem
+            // 
+            openPreferencesToolStripMenuItem.Name = "openPreferencesToolStripMenuItem";
+            openPreferencesToolStripMenuItem.Size = new Size(180, 22);
+            openPreferencesToolStripMenuItem.Text = "Open Preferences";
+            openPreferencesToolStripMenuItem.Click += openPreferencesToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -307,5 +368,13 @@
         private ToolStripMenuItem redoToolStripMenuItem;
         private ToolStripMenuItem preferencesToolStripMenuItem;
         private ToolStripMenuItem flavorToolStripMenuItem;
+        private ToolStripMenuItem languageToolStripMenuItem;
+        private ToolStripMenuItem customToolStripMenuItem;
+        private ToolStripMenuItem cSharpToolStripMenuItem;
+        private ToolStripMenuItem hTMLToolStripMenuItem;
+        private ToolStripMenuItem jSToolStripMenuItem;
+        private ToolStripMenuItem xMLToolStripMenuItem;
+        private ToolStripMenuItem luaToolStripMenuItem;
+        private ToolStripMenuItem openPreferencesToolStripMenuItem;
     }
 }
